@@ -25,7 +25,7 @@ export default function Home() {
 
         <div className={styles.grid}>
           {events.map(event =>
-            <a key={event.id} href="https://nextjs.org/docs" className={styles.card}>
+            <a key={event.id} href="#" className={styles.card}>
               <iframe
                 width="250"
                 height="150"
