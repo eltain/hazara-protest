@@ -34,7 +34,7 @@ export default function Home() {
                 src={"https://www.google.com/maps/embed/v1/search?key=AIzaSyClz09WvWSNKUFI-lwPmNO3YAJIwg-Qe9s&q=" + event.location} >
               </iframe>
               <h2>{event.title}</h2>
-              <span>{moment(event.startDate).format('ddd, MMM d, h:mm A ')} {event.endDate ? " - " + moment(event.endDate).format('h:mm A') : ""} </span>
+              <span>{moment(event.startDate).format('ddd, MMM DD, h:mm A ')} {event.endDate ? " - " + moment(event.endDate).format('h:mm A') : ""} </span>
               <p>{event.location}</p>
             </a>
           )}
