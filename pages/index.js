@@ -19,9 +19,9 @@ export default function Home() {
           #StopHazaraGenocide Protest Map
         </h1>
 
-        {/* <p className={styles.description}>
-          Protest Map
-        </p> */}
+        <p className={styles.description}>
+          To add your protest location, <a href="https://docs.google.com/forms/d/1n-53iQJLTQjCOcRdhl_2G1E_KNQ9X5rNt57jFsD9_2g/viewform?edit_requested=true"> Please fill the form here</a>
+        </p>
 
         <div className={styles.grid}>
           {events.map(event =>

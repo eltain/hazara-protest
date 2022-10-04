@@ -8,6 +8,10 @@ const events = [
         startDate: new Date("09/10/2022").setHours(12),
         location: 'Melbourne, Australia'
     }, {
+        title: "Islamabad, Pakistan",
+        startDate: new Date("09/10/2022").setHours(17),
+        location: 'National Press Club, F-6/1, Islamabad, Pakistan'
+    },{
         title: "Oslo, Norway",
         startDate: new Date("08/10/2022").setHours(12),
         location: 'Oslo, Norway',
