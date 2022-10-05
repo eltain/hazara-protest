@@ -1,7 +1,25 @@
-const events = [
+function string_to_slug(str) {
+    str = str.replace(/^\s+|\s+$/g, ''); // trim
+    str = str.toLowerCase();
+
+    // remove accents, swap ñ for n, etc
+    var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+    var to = "aaaaeeeeiiiioooouuuunc------";
+    for (var i = 0, l = from.length; i < l; i++) {
+        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+    }
+
+    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+        .replace(/-+/g, '-'); // collapse dashes
+
+    return str;
+}
+
+export const events = JSON.stringify([
     {
         title: "Sydney, Australia",
-        startDate: new Date("10/08/2022"),
+        startDate: new Date("10/08/2022").setHours(12),
         location: 'Sydney Town Hall, George Street, Sydney NSW'
     }, {
         title: "Melbourne, Australia",
@@ -11,7 +29,7 @@ const events = [
         title: "Islamabad, Pakistan",
         startDate: new Date("10/08/2022").setHours(17),
         location: 'National Press Club, F-6/1, Islamabad, Pakistan'
-    },{
+    }, {
         title: "Oslo, Norway",
         startDate: new Date("10/08/2022").setHours(12),
         location: 'Oslo, Norway',
@@ -118,23 +136,21 @@ const events = [
         endDate: new Date("10/08/2022").setHours(20),
         location: 'Greek Parliament, Athens, Greece',
         contact: '+3 069 818 005 91'
-    },{
+    }, {
         title: "Copenhagen, Denmark",
         startDate: new Date("10/08/2022").setHours(13),
         endDate: new Date("10/08/2022").setHours(15),
         location: 'Copenhagen, Denmark',
-    },{
+    }, {
         title: "Rome, Italy",
         startDate: new Date("10/08/2022").setHours(9),
         endDate: new Date("10/08/2022").setHours(12),
         location: 'Piazza Dei Santi Appostoli, rome',
         contact: '+3 932 894 915 20'
-    },{
+    }, {
         title: "Trabzon, Turkey",
         startDate: new Date("10/08/2022").setHours(14),
         location: 'Trabzon, Turkey',
         contact: '+9 050 795 295 03'
     }
-].map(e => ({ id: Math.floor(Math.random() * 10000000000), ...e }))
-
-export default events
+].map(e => ({ id: Math.floor(Math.random() * 10000000000), slug: string_to_slug(e.location), ...e })));
