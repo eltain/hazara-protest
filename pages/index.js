@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styles from '../styles/Home.module.css'
-import { EVENTS, CONTINENTS } from '../data/event'
+import { EVENTS, CONTINENTS, CONTINENTS_COUNTS } from '../data/event'
 import moment from 'moment-mini'
 import Layout from '../components/Layout'
 import Link from 'next/link'
@@ -35,7 +35,8 @@ function Home({ protests }) {
         <span>#StopHazaraGenocide</span><br /> Protest Map
       </h1>
       <div className={styles.chipContainer} >
-        {CONTINENTS.map((con, i) => <div key={"" + i} className={styles.chip + " " + (continent === con ? styles.selected : "")} onClick={() => handleContinentChange(con)} >{con}</div>)}
+      <div key={"Show All" } className={styles.chip + " " + (continent === 'Show All' ? styles.selected : "")} onClick={() => handleContinentChange('Show All')} >{"Show All ("+ protests.length+ ")"}</div>
+        {CONTINENTS.map((con, i) => <div key={"" + i} className={styles.chip + " " + (continent === con ? styles.selected : "")} onClick={() => handleContinentChange(con)} >{con + " ("+CONTINENTS_COUNTS[con] + ")"}</div>)}
       </div>
       <div className={styles.grid}>
         {selectedProtests.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(protest =>

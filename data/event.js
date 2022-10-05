@@ -438,21 +438,21 @@ export const EVENTS = JSON.stringify([
         location: 'Calgary City Hall, Calgary, Canada',
         contact: 'NA',
         continent: 'America'
-    },{
+    }, {
         title: "Luxembourg, Luxembourg",
         date: "Oct 08",
         startTime: '02:00 PM',
         location: 'Place Emile Hamilius, Luxembourg',
         contact: 'NA',
         continent: 'Europe'
-    },{
+    }, {
         title: "Wesel, Germany",
         date: "Oct 08",
         startTime: '02:00 PM',
         location: 'Berliner Tor, Wesel',
         contact: 'NA',
         continent: 'Europe'
-    },{
+    }, {
         title: "Canberra, Australia",
         date: "Oct 09",
         startTime: '06:30 PM',
@@ -461,9 +461,12 @@ export const EVENTS = JSON.stringify([
         continent: 'Oceania'
     }
 ].map(e => ({ id: Math.floor(Math.random() * 10000000000), slug: string_to_slug(e.location), ...e })));
-
+export const CONTINENTS_COUNTS = {}
 export const CONTINENTS = JSON.parse(EVENTS).reduce((lists, cur) => {
     if (!lists.includes(cur.continent))
         lists.push(cur.continent)
+    if (!CONTINENTS_COUNTS[cur.continent])
+        CONTINENTS_COUNTS[cur.continent] = 0
+    CONTINENTS_COUNTS[cur.continent] += 1
     return lists
-}, ['Show All']);
+}, []);
