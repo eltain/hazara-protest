@@ -17,6 +17,7 @@ function Layout({ title = "Stop Hazara Genocide | Protest Map", description = "S
             </main>
 
             <footer className={styles.footer}>
+                To add your protest location, &nbsp; <a target="_blank" href="https://docs.google.com/forms/d/1n-53iQJLTQjCOcRdhl_2G1E_KNQ9X5rNt57jFsD9_2g/viewform?edit_requested=true"> Please fill the form here</a>
                 {/* <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"

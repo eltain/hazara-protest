@@ -25,9 +25,8 @@ function Home({ protests }) {
     setPage(newPage - 1);
   };
   const handleContinentChange = value => {
+    setPage(0)
     setContinent(value)
-    // const newLists = protests.filter(p => p.continent === value)
-    // setSelectedProtests(newLists)
   }
 
   return (
@@ -59,9 +58,6 @@ function Home({ protests }) {
       <div style={{ padding: '1rem' }} >
         {Array.from({ length: Math.ceil(selectedProtests.length / 12) }, (_, i) => i + 1).map(i => <span key={"" + i} onClick={(e) => handleChangePage(e, i)} className={styles.indicator + " " + (page+1 === i ? styles.selected : "")}>{i}</span>)}
       </div>
-      <p className={styles.description}>
-        To add your protest location, <a href="https://docs.google.com/forms/d/1n-53iQJLTQjCOcRdhl_2G1E_KNQ9X5rNt57jFsD9_2g/viewform?edit_requested=true"> Please fill the form here</a>
-      </p>
     </Layout>
   )
 }

@@ -34,7 +34,8 @@ export const EVENTS = JSON.stringify([
         continent: 'Asia'
     }, {
         title: "Oslo, Norway",
-        startDate: new Date("10/08/2022").setHours(18),
+        startDate: new Date("10/08/2022").setHours(13),
+        endDate: new Date("10/08/2022").setHours(17),
         location: '7 Juni plassen, Oslo, Norway',
         contact: '+4740087921',
         continent: 'Europe'
