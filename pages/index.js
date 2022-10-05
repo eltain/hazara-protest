@@ -1,24 +1,48 @@
-import Head from 'next/head'
+import React from 'react'
+
 import styles from '../styles/Home.module.css'
-import { events } from '../data/event'
+import { EVENTS, CONTINENTS } from '../data/event'
 import moment from 'moment-mini'
 import Layout from '../components/Layout'
 import Link from 'next/link'
-const DATE_FORMAT = 'DD'
+
 function Home({ protests }) {
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(12);
+  const [continent, setContinent] = React.useState('Show All')
+  const [selectedProtests, setSelectedProtests] = React.useState([])
+  React.useEffect(() => {
+    if (continent && continent !== 'Show All') {
+      const newLists = protests.filter(p => p.continent === continent)
+      setSelectedProtests(newLists)
+    } else {
+      setSelectedProtests(protests)
+    }
+  }, [continent])
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage - 1);
+  };
+  const handleContinentChange = value => {
+    setContinent(value)
+    // const newLists = protests.filter(p => p.continent === value)
+    // setSelectedProtests(newLists)
+  }
 
   return (
     <Layout>
       <h1 className={styles.title}>
-        <span>#StopHazaraGenocide</span><br/> Protest Map
+        <span>#StopHazaraGenocide</span><br /> Protest Map
       </h1>
 
       <p className={styles.description}>
         To add your protest location, <a href="https://docs.google.com/forms/d/1n-53iQJLTQjCOcRdhl_2G1E_KNQ9X5rNt57jFsD9_2g/viewform?edit_requested=true"> Please fill the form here</a>
       </p>
-
+      <div className={styles.chipContainer} >
+        {CONTINENTS.map((con, i) => <div key={"" + i} className={styles.chip + " " + (continent === con ? styles.selected : "")} onClick={() => handleContinentChange(con)} >{con}</div>)}
+      </div>
       <div className={styles.grid}>
-        {protests.map(protest =>
+        {selectedProtests.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(protest =>
           <Link key={protest.id} href={"/protests/" + encodeURIComponent(protest.slug)} className={styles.link}>
             <div className={styles.card}>
               <iframe
@@ -35,14 +59,18 @@ function Home({ protests }) {
           </Link>
         )}
       </div>
+      <div style={{ padding: '1rem' }} >
+        {Array.from({ length: Math.ceil(selectedProtests.length / 12) }, (_, i) => i + 1).map(i => <span key={"" + i} onClick={(e) => handleChangePage(e, i)} style={{ margin: '0 1rem', cursor: 'pointer' }}>{i}</span>)}
+      </div>
     </Layout>
   )
 }
 
 export async function getStaticProps() {
+  console.log(CONTINENTS)
   return {
     props: {
-      protests: JSON.parse(events)
+      protests: JSON.parse(EVENTS)
     }
   }
 }

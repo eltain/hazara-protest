@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
-import { events } from '../../data/event'
+import { EVENTS } from '../../data/event'
 import moment from 'moment-mini'
 import Layout from '../../components/Layout'
 import Image from 'next/image'
@@ -52,7 +52,7 @@ function Protest({ protest }) {
 
 export async function getStaticProps({ params }) {
     const slug = params?.slug[0]
-    const protests = JSON.parse(events)
+    const protests = JSON.parse(EVENTS)
     const protest = protests.find(p => p.slug === slug)
     return {
         props: {
@@ -62,7 +62,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths({ props }) {
-    const protests = JSON.parse(events)
+    const protests = JSON.parse(EVENTS)
 
     return {
         paths: protests.map((p) => `/protests/${p.slug}`) || [],
