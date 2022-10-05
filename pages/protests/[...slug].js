@@ -12,9 +12,9 @@ function Protest({ protest }) {
     return (
         <Layout>
             <Link href="/">
-                <h1 className={styles.title}>
-                    <span>#StopHazaraGenocide</span><br />Protest Map
-                </h1>
+            <h1 className={styles.title}>
+                <span>#StopHazaraGenocide</span><br />Protest Map
+            </h1>
             </Link>
             <iframe
                 className={styles.map}
@@ -29,7 +29,7 @@ function Protest({ protest }) {
                     </div>
                     <div>
                         <h4>Date & Time</h4>
-                        <span>{moment(protest.startDate).format('ddd, MMM DD, h:mm A ')} {protest.endDate ? " - " + moment(protest.endDate).format('h:mm A') : ""}</span>
+                        <span>{protest.date + ", " + protest.startTime + (protest.endTime ? " - " + protest.endTime : "")}</span>
                     </div>
                 </div>
                 <div className={styles.locationContainer}>
@@ -42,7 +42,7 @@ function Protest({ protest }) {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </Layout >
     )
 }
 

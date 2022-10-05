@@ -49,14 +49,14 @@ function Home({ protests }) {
                 src={"https://www.google.com/maps/embed/v1/search?key=AIzaSyClz09WvWSNKUFI-lwPmNO3YAJIwg-Qe9s&q=" + protest?.location} >
               </iframe>
               <h2>{protest.title}</h2>
-              <span>{moment(protest.startDate).format('ddd, MMM DD, h:mm A ')} {protest.endDate ? " - " + moment(protest.endDate).format('h:mm A') : ""} </span>
+              <span>{protest.date + ", " + protest.startTime + (protest.endTime ? " - " + protest.endTime : "")} </span>
               <p>{protest?.location}</p>
             </div>
           </Link>
         )}
       </div>
       <div style={{ padding: '1rem' }} >
-        {Array.from({ length: Math.ceil(selectedProtests.length / 12) }, (_, i) => i + 1).map(i => <span key={"" + i} onClick={(e) => handleChangePage(e, i)} className={styles.indicator + " " + (page+1 === i ? styles.selected : "")}>{i}</span>)}
+        {Array.from({ length: Math.ceil(selectedProtests.length / 12) }, (_, i) => i + 1).map(i => <span key={"" + i} onClick={(e) => handleChangePage(e, i)} className={styles.indicator + " " + (page + 1 === i ? styles.selected : "")}>{i}</span>)}
       </div>
     </Layout>
   )
