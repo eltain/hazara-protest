@@ -4,15 +4,18 @@ import { events } from '../../data/event'
 import moment from 'moment-mini'
 import Layout from '../../components/Layout'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function Protest({ protest }) {
     if (!protest)
         return <div></div>
     return (
         <Layout>
-            <h1 className={styles.title}>
-                <span>#StopHazaraGenocide</span><br />Protest Map
-            </h1>
+            <Link href="/">
+                <h1 className={styles.title}>
+                    <span>#StopHazaraGenocide</span><br />Protest Map
+                </h1>
+            </Link>
             <iframe
                 width="850"
                 height="350"
