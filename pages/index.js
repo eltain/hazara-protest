@@ -5,6 +5,7 @@ import { EVENTS, CONTINENTS } from '../data/event'
 import moment from 'moment-mini'
 import Layout from '../components/Layout'
 import Link from 'next/link'
+import Image from 'next/image'
 
 function Home({ protests }) {
   const [page, setPage] = React.useState(0);
@@ -34,10 +35,6 @@ function Home({ protests }) {
       <h1 className={styles.title}>
         <span>#StopHazaraGenocide</span><br /> Protest Map
       </h1>
-
-      <p className={styles.description}>
-        To add your protest location, <a href="https://docs.google.com/forms/d/1n-53iQJLTQjCOcRdhl_2G1E_KNQ9X5rNt57jFsD9_2g/viewform?edit_requested=true"> Please fill the form here</a>
-      </p>
       <div className={styles.chipContainer} >
         {CONTINENTS.map((con, i) => <div key={"" + i} className={styles.chip + " " + (continent === con ? styles.selected : "")} onClick={() => handleContinentChange(con)} >{con}</div>)}
       </div>
@@ -60,8 +57,11 @@ function Home({ protests }) {
         )}
       </div>
       <div style={{ padding: '1rem' }} >
-        {Array.from({ length: Math.ceil(selectedProtests.length / 12) }, (_, i) => i + 1).map(i => <span key={"" + i} onClick={(e) => handleChangePage(e, i)} style={{ margin: '0 1rem', cursor: 'pointer' }}>{i}</span>)}
+        {Array.from({ length: Math.ceil(selectedProtests.length / 12) }, (_, i) => i + 1).map(i => <span key={"" + i} onClick={(e) => handleChangePage(e, i)} className={styles.indicator + " " + (page+1 === i ? styles.selected : "")}>{i}</span>)}
       </div>
+      <p className={styles.description}>
+        To add your protest location, <a href="https://docs.google.com/forms/d/1n-53iQJLTQjCOcRdhl_2G1E_KNQ9X5rNt57jFsD9_2g/viewform?edit_requested=true"> Please fill the form here</a>
+      </p>
     </Layout>
   )
 }
