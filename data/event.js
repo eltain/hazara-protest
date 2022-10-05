@@ -460,7 +460,7 @@ export const EVENTS = JSON.stringify([
         contact: 'NA',
         continent: 'Oceania'
     }
-].map(e => ({ id: Math.floor(Math.random() * 10000000000), slug: string_to_slug(e.location), ...e })));
+].map(e => ({ id: Math.floor(Math.random() * 10000000000), slug: string_to_slug(e.location), ...e })).sort((a, b) => a.title < b.title ? -1 : 1));
 export const CONTINENTS_COUNTS = {}
 export const CONTINENTS = JSON.parse(EVENTS).reduce((lists, cur) => {
     if (!lists.includes(cur.continent))
