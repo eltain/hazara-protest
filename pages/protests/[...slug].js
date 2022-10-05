@@ -6,7 +6,7 @@ import Layout from '../../components/Layout'
 import Image from 'next/image'
 
 function Protest({ protest }) {
-     if(!protest)
+    if (!protest)
         return <div></div>
     return (
         <Layout>
@@ -25,7 +25,7 @@ function Protest({ protest }) {
                 <div style={{ display: 'flex' }} >
                     <div className={styles.locationContainer} >
                         <div className={styles.iconContainer}>
-                            <Image alt="calendar" src="/calendar.png" width="24" height="24" />
+                            <Image alt="calendar" src="../../calendar.png" width="24" height="24" />
                         </div>
                         <div>
                             <h4>Date & Time</h4>
@@ -34,7 +34,7 @@ function Protest({ protest }) {
                     </div>
                     <div className={styles.locationContainer}>
                         <div className={styles.iconContainer}>
-                            <Image alt="calendar" src="/location-24.png" width="24" height="24" />
+                            <Image alt="calendar" src={"../../location-24.png"} width="24" height="24" />
                         </div>
                         <div>
                             <h4>Location</h4>
