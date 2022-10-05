@@ -26,11 +26,11 @@ function Home({ protests }) {
                 height="150"
                 style={{ border: 0 }}
                 loading="lazy"
-                src={"https://www.google.com/maps/embed/v1/search?key=AIzaSyClz09WvWSNKUFI-lwPmNO3YAJIwg-Qe9s&q=" + protest.location} >
+                src={"https://www.google.com/maps/embed/v1/search?key=AIzaSyClz09WvWSNKUFI-lwPmNO3YAJIwg-Qe9s&q=" + protest?.location} >
               </iframe>
               <h2>{protest.title}</h2>
               <span>{moment(protest.startDate).format('ddd, MMM DD, h:mm A ')} {protest.endDate ? " - " + moment(protest.endDate).format('h:mm A') : ""} </span>
-              <p>{protest.location}</p>
+              <p>{protest?.location}</p>
             </div>
           </Link>
         )}

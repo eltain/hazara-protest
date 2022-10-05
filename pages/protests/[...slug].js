@@ -6,7 +6,8 @@ import Layout from '../../components/Layout'
 import Image from 'next/image'
 
 function Protest({ protest }) {
-
+     if(!protest)
+        return <div></div>
     return (
         <Layout>
             <h1 className={styles.title}>
@@ -17,14 +18,14 @@ function Protest({ protest }) {
                 height="350"
                 style={{ border: 0 }}
                 loading="lazy"
-                src={"https://www.google.com/maps/embed/v1/search?key=AIzaSyClz09WvWSNKUFI-lwPmNO3YAJIwg-Qe9s&q=" + protest.location} >
+                src={"https://www.google.com/maps/embed/v1/search?key=AIzaSyClz09WvWSNKUFI-lwPmNO3YAJIwg-Qe9s&q=" + protest?.location} >
             </iframe>
             <h1>{protest?.title || 'Please add title'}</h1>
-            <div className={styles.locationWrapper}>               
+            <div className={styles.locationWrapper}>
                 <div style={{ display: 'flex' }} >
                     <div className={styles.locationContainer} >
                         <div className={styles.iconContainer}>
-                            <Image src="/calendar.png" width="24" height="24" />
+                            <Image alt="calendar" src="/calendar.png" width="24" height="24" />
                         </div>
                         <div>
                             <h4>Date & Time</h4>
@@ -33,11 +34,11 @@ function Protest({ protest }) {
                     </div>
                     <div className={styles.locationContainer}>
                         <div className={styles.iconContainer}>
-                            <Image src="/location-24.png" width="24" height="24" />
+                            <Image alt="calendar" src="/location-24.png" width="24" height="24" />
                         </div>
                         <div>
                             <h4>Location</h4>
-                            <span>{protest.location}</span>
+                            <span>{protest?.location || 'TBC'}</span>
                         </div>
                     </div>
                 </div>
