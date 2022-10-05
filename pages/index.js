@@ -67,7 +67,6 @@ function Home({ protests }) {
 }
 
 export async function getStaticProps() {
-  console.log(CONTINENTS)
   return {
     props: {
       protests: JSON.parse(EVENTS)

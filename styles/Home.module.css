@@ -45,7 +45,7 @@
 }
 
 .title {
-  margin: 2rem ;
+  margin: 2rem 0 ;
   line-height: 1.15;
   font-size: 4rem;
   cursor: pointer;
@@ -125,9 +125,11 @@
 .chipContainer {
   display: flex;
   padding: 1rem 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .chip {
-  margin: 0 .5rem;
+  margin: .5rem;
   padding: .5rem .8rem;
   text-align: center;
   color: inherit;
@@ -174,6 +176,7 @@
   margin-left: 0.5rem;
 }
 .locationWrapper {
+  display: flex;
   padding: 1rem 0;
   width: 100%;
 }
@@ -200,10 +203,18 @@
   height: 40px;
   margin-right: 1rem;
 }
+.map {
+  border: 0;
+  width: 800px;
+  height: 400px;
+}
 
 @media (max-width: 600px) {
+  .main {
+    padding-top: 1rem;
+  }
   .title {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   .description {
     font-size: 1rem;
@@ -211,6 +222,16 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+  .locationWrapper {
+    display: "flex";
+    flex-direction: column;
+  }
+  .locationContainer {
+    margin-bottom: 1rem;
+  }
+  .map {
+    width: 100%;
   }
 }
 

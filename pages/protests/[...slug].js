@@ -17,32 +17,28 @@ function Protest({ protest }) {
                 </h1>
             </Link>
             <iframe
-                width="850"
-                height="350"
-                style={{ border: 0 }}
+                className={styles.map}
                 loading="lazy"
                 src={"https://www.google.com/maps/embed/v1/search?key=AIzaSyClz09WvWSNKUFI-lwPmNO3YAJIwg-Qe9s&q=" + protest?.location} >
             </iframe>
             <h1>{protest?.title || 'Please add title'}</h1>
             <div className={styles.locationWrapper}>
-                <div style={{ display: 'flex' }} >
-                    <div className={styles.locationContainer} >
-                        <div className={styles.iconContainer}>
-                            <Image alt="calendar" src="../calendar.png" width="24" height="24" />
-                        </div>
-                        <div>
-                            <h4>Date & Time</h4>
-                            <span>{moment(protest.startDate).format('ddd, MMM DD, h:mm A ')} {protest.endDate ? " - " + moment(protest.endDate).format('h:mm A') : ""}</span>
-                        </div>
+                <div className={styles.locationContainer} >
+                    <div className={styles.iconContainer}>
+                        <Image alt="calendar" src="../calendar.png" width="24" height="24" />
                     </div>
-                    <div className={styles.locationContainer}>
-                        <div className={styles.iconContainer}>
-                            <Image alt="calendar" src={"../location-24.png"} width="24" height="24" />
-                        </div>
-                        <div>
-                            <h4>Location</h4>
-                            <span>{protest?.location || 'TBC'}</span>
-                        </div>
+                    <div>
+                        <h4>Date & Time</h4>
+                        <span>{moment(protest.startDate).format('ddd, MMM DD, h:mm A ')} {protest.endDate ? " - " + moment(protest.endDate).format('h:mm A') : ""}</span>
+                    </div>
+                </div>
+                <div className={styles.locationContainer}>
+                    <div className={styles.iconContainer}>
+                        <Image alt="calendar" src={"../location-24.png"} width="24" height="24" />
+                    </div>
+                    <div>
+                        <h4>Location</h4>
+                        <span>{protest?.location || 'TBC'}</span>
                     </div>
                 </div>
             </div>
