@@ -115,7 +115,7 @@ export const EVENTS = JSON.stringify([
         date: "Oct 08",
         startTime: '04:00 PM',
         endTime: '07:00 PM',
-        location: 'Madrid, Spain',
+        location: 'Plaza de jacinto Benavente, Madrid, Spain',
         contact: '+3 469 862 3220',
         continent: 'Europe'
     }, {
